@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd" default-autowire="constructor">
+
+  <bean id="executor" class="java.util.concurrent.Executors"
+        factory-method="newFixedThreadPool" destroy-method="shutdown">
+    <constructor-arg value="4" type="int" />
+  </bean>
+
+  <bean id="scheduler" class="java.util.concurrent.Executors"
+        factory-method="newScheduledThreadPool" destroy-method="shutdown">
+    <constructor-arg value="4" type="int" />
+  </bean>
+
+  <bean class="se.tedro.bootstrap.cupboard.PublicWaterTap"/>
+
+  <bean class="se.tedro.bootstrap.cupboard.ThermoPotBoiler" />
+
+  <bean class="se.tedro.bootstrap.cupboard.CheapCoffeePress" />
+
+  <bean class="se.tedro.bootstrap.cupboard.CheapGrinder"/>
+
+  <bean id="brewer" class="se.tedro.bootstrap.cupboard.CoffeePressBrewer">
+  </bean>
+</beans>
